@@ -29,8 +29,8 @@ production: &base
   ## GitLab settings
   gitlab:
     ## Web server settings (note: host is the FQDN, do not include http://)
-    host: localhost
-    port: 80 # Set to 443 if using HTTPS, see installation.md#using-https for additional HTTPS configuration details
+    host: 192.168.31.80
+    port: 8090 # Set to 443 if using HTTPS, see installation.md#using-https for additional HTTPS configuration details
     https: false # Set to true if using HTTPS, see installation.md#using-https for additional HTTPS configuration details
 
     # Uncommment this line below if your ssh host is different from HTTP/HTTPS one
@@ -56,7 +56,7 @@ production: &base
       #- 2001:0db8::/32
 
     # Uncomment and customize if you can't use the default user to run GitLab (default: 'git')
-    # user: git
+    user: gitlab
 
     ## Date & Time settings
     # Uncomment and customize if you want to change the default time zone of GitLab application.
@@ -67,9 +67,9 @@ production: &base
     # Uncomment and set to false if you need to disable email sending from GitLab (default: true)
     # email_enabled: true
     # Email address used in the "From" field in mails sent by GitLab
-    email_from: example@example.com
+    email_from: gitlab@elhombre.local
     email_display_name: GitLab
-    email_reply_to: noreply@example.com
+    email_reply_to: gitlab@elhombre.local
 
     # Email server smtp settings are in config/initializers/smtp_settings.rb.sample
 
@@ -426,7 +426,7 @@ production: &base
   # least. This setting is fed to 'rm -rf' in
   # db/migrate/20151023144219_remove_satellites.rb
   satellites:
-    path: /home/git/gitlab-satellites/
+    path: /Users/gitlab/gitlab-satellites/
 
   ## Backup settings
   backup:
@@ -451,15 +451,15 @@ production: &base
 
   ## GitLab Shell settings
   gitlab_shell:
-    path: /home/git/gitlab-shell/
+    path: /Users/gitlab/gitlab-shell/
 
     # REPOS_PATH MUST NOT BE A SYMLINK!!!
-    repos_path: /home/git/repositories/
-    hooks_path: /home/git/gitlab-shell/hooks/
+    repos_path: /Users/gitlab/repositories/
+    hooks_path: /Users/gitlab/gitlab-shell/hooks/
 
     # File that contains the secret key for verifying access for gitlab-shell.
     # Default is '.gitlab_shell_secret' relative to Rails.root (i.e. root of the GitLab app).
-    # secret_file: /home/git/gitlab/.gitlab_shell_secret
+    # secret_file: /Users/gitlab/gitlab/.gitlab_shell_secret
 
     # Git over HTTP
     upload_pack: true
@@ -472,7 +472,7 @@ production: &base
   # CAUTION!
   # Use the default values unless you really know what you are doing
   git:
-    bin_path: /usr/bin/git
+    bin_path: /usr/local/bin/git
     # The next value is the maximum memory size grit can use
     # Given in number of bytes per git object (e.g. a commit)
     # This value can be increased if you have very large commits
